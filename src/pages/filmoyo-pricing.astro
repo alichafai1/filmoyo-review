@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { commercialAddon, personalPrice } from '../lib/affiliate';
+
+const commercialTotal = personalPrice + commercialAddon;
+
+const rows = [
+  { label: 'Price', personal: `$${personalPrice} once`, commercial: `$${commercialTotal} once`, monthly: 'About $15/mo, using Runway as the example' },
+  { label: 'Keeps billing', personal: 'No', commercial: 'No', monthly: 'Yes. A year at $15 is $180' },
+  { label: 'Your own channel and links', personal: 'Yes', commercial: 'Yes', monthly: 'Depends on that tool’s license' },
+  { label: 'Sell the films to clients', personal: 'No', commercial: 'Yes', monthly: 'Only if that plan allows client work' },
+  { label: 'If you stop paying', personal: 'You still have the studio', commercial: 'You still have the studio', monthly: 'Access usually ends with the subscription' },
+  { label: 'Character Lock and frame approval', personal: 'Included', commercial: 'Same studio', monthly: 'Not this product' },
+  { label: 'Usage', personal: '600 Core + 150 PRO credits, then optional top-ups', commercial: 'Same credits', monthly: 'Their own monthly limits' },
+];
+---
+
+<BaseLayout
+  title="Filmoyo Director Pricing: $27 vs $37 (Which One Do You Need?)"
+  description="Filmoyo Director pricing: the personal studio is $27 once. Selling films to clients requires the commercial license, $10 more, $37 total. Compared with a $15 monthly tool."
+  canonicalURL="/filmoyo-pricing"
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Pricing' }]} />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">Pricing</p>
+      <h1>Filmoyo Director Pricing: ${personalPrice} vs ${commercialTotal}</h1>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        The personal studio is ${personalPrice} once. If you want to sell the videos to clients, you must add the commercial license at checkout. That add-on is ${commercialAddon}, so the total is ${commercialTotal}. Same studio either way. The license is the only difference.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <div class="price-layout">
+        <article class="price-card">
+          <p class="eyebrow">Personal</p>
+          <p class="price">${personalPrice}<span> once</span></p>
+          <p class="price-note">Your own projects, your own channel, and links you already promote. Not for client work.</p>
+        </article>
+        <article class="price-card">
+          <p class="eyebrow">Commercial</p>
+          <p class="price">${commercialTotal}<span> once</span></p>
+          <p class="price-note">${personalPrice} plus the ${commercialAddon} license. This is the one you need if a business is paying you for the film.</p>
+        </article>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Choose Filmoyo at checkout →</AffiliateCta>
+      </div>
+      <div class="section-head">
+        <p class="eyebrow">Side by side</p>
+        <h2 class="section-title">Personal, commercial, and a monthly tool.</h2>
+        <p class="lede">Runway is the monthly example, at about $15 a month. That listed price can change. The point of the column is the bill that keeps coming, not a feature-by-feature review of Runway.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th scope="col"> </th>
+              <th scope="col">Personal · ${personalPrice}</th>
+              <th scope="col">Commercial · ${commercialTotal}</th>
+              <th scope="col">Monthly tools</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr>
+                <td>{row.label}</td>
+                <td>{row.personal}</td>
+                <td>{row.commercial}</td>
+                <td>{row.monthly}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Get the one-time studio →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container stack-lg">
+      <div class="section-head">
+        <p class="eyebrow">Why one-time wins</p>
+        <h2 class="section-title">A monthly plan keeps charging after the film is done.</h2>
+        <p class="lede">
+          At $15 a month, a year is $180. Two years is $360. Filmoyo’s personal studio is ${personalPrice} once, and the commercial version is ${commercialTotal} once. You can still buy more credits later if you want more films. You are not paying rent on the license every month you skip.
+        </p>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Get Filmoyo once →</AffiliateCta>
+      </div>
+      <div class="split">
+        <article class="surface panel">
+          <h3>Pick ${personalPrice} if</h3>
+          <ul class="check-list">
+            <li>The films go on your channel or under a link you already own.</li>
+            <li>Nobody is paying you to make the video.</li>
+            <li>You want the studio without the commercial add-on.</li>
+          </ul>
+        </article>
+        <article class="surface panel">
+          <h3>Pick ${commercialTotal} if</h3>
+          <ul class="check-list">
+            <li>A client, a local business, or a freelance gig will pay for the film.</li>
+            <li>You want the right to sell the work, not only to post it yourself.</li>
+            <li>You would rather add ${commercialAddon} now than discover the gap after the invoice.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+      <div class="final-band">
+        <p class="eyebrow">Checkout</p>
+        <h2 class="section-title">The button opens the order form. The checkbox is where the extra ${commercialAddon} lives.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          Leave it off for the ${personalPrice} personal license. Tick the commercial license if you will sell the films. Credits on top of the included 600 Core and 150 PRO are optional, and the vendor says those top-up packs are non-refundable.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Open the Filmoyo checkout →</AffiliateCta>
+          <a class="text-link" href="/filmoyo-bonus">Add the bonuses</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

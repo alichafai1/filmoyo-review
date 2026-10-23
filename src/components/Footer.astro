@@ -1,0 +1,67 @@
+---
+import Logo from './Logo.astro';
+
+const explore = [
+  { href: '/#verdict', label: 'Review' },
+  { href: '/filmoyo-pricing', label: 'Pricing' },
+  { href: '/filmoyo-legit-or-scam', label: 'Legit or Scam' },
+  { href: '/filmoyo-bonus', label: 'Bonuses' },
+];
+
+const onPage = [
+  { href: '/filmoyo-vs-runway', label: 'Filmoyo vs Runway' },
+  { href: '/filmoyo-vs-invideo', label: 'Filmoyo vs InVideo' },
+  { href: '/best-ai-film-studios', label: 'Best AI film studios' },
+  { href: '/filmoyo-character-lock-explained', label: 'Character Lock' },
+  { href: '/how-to-create-ai-short-film', label: 'Create an AI short' },
+  { href: '/filmoyo-tutorial', label: 'Tutorial' },
+  { href: '/how-to-write-cinematic-prompts', label: 'Cinematic prompts' },
+  { href: '/filmoyo-for-content-creators', label: 'For content creators' },
+  { href: '/filmoyo-for-agencies', label: 'For agencies' },
+  { href: '/filmoyo-vs-pika', label: 'Filmoyo vs Pika' },
+  { href: '/runway-alternatives', label: 'Runway alternatives' },
+  { href: '/best-ai-video-generators', label: 'Best AI video generators' },
+  { href: '/filmoyo-for-youtube-automation', label: 'YouTube automation' },
+  { href: '/filmoyo-casting-vault-explained', label: 'Casting Vault' },
+  { href: '/how-to-make-faceless-youtube-videos', label: 'Faceless YouTube videos' },
+];
+
+const legal = [
+  { href: '/affiliate-disclosure', label: 'Affiliate disclosure' },
+  { href: '/privacy-policy', label: 'Privacy policy' },
+  { href: '/terms', label: 'Terms' },
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <Logo />
+      <p>An independent review of Filmoyo Director, the AI film studio you run by typing.</p>
+    </div>
+    <nav class="footer-col" aria-label="Explore">
+      <h2>Explore</h2>
+      {explore.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+    <nav class="footer-col" aria-label="Guides">
+      <h2>Guides</h2>
+      {onPage.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+    <nav class="footer-col" aria-label="Legal">
+      <h2>Legal</h2>
+      {legal.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <p>
+      Disclosure: This site is an independent review. We may earn a commission if you purchase through our links, at no extra cost to you.
+    </p>
+    <p>Filmoyo Review</p>
+  </div>
+</footer>

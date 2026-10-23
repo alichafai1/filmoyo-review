@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { personalPrice } from '../lib/affiliate';
+
+const rows = [
+  {
+    label: 'Best at',
+    pika: 'A short loop or a motion experiment.',
+    filmoyo: 'A finished scene with a cast that returns.',
+  },
+  {
+    label: 'Length of the job',
+    pika: 'A few seconds you can replay.',
+    filmoyo: 'A storyboard of shots you approve, then stitch.',
+  },
+  {
+    label: 'The face',
+    pika: 'Each new prompt is a new generation. The person often changes.',
+    filmoyo: 'Character Lock keeps one reference sheet in every shot.',
+  },
+  {
+    label: 'Price',
+    pika: 'A subscription. The listed plan moves.',
+    filmoyo: `$${personalPrice} once for the personal studio.`,
+  },
+];
+
+const faqs = [
+  {
+    question: 'Is Pika better than Filmoyo?',
+    answer:
+      'For a looping effect or a quick motion test, Pika is the toy to reach for. For a short with the same actor in more than one shot, Filmoyo is the studio.',
+  },
+  {
+    question: 'Can Pika hold a character?',
+    answer:
+      'You can try to steer it. The product is still built to animate the clip in front of you. The next scene is another generation, and the face often drifts. Filmoyo locks the sheet on purpose.',
+  },
+  {
+    question: 'Is Filmoyo only for long films?',
+    answer:
+      'No. A film can be a handful of approved shots, vertical or widescreen. The difference is that those shots share a cast and a timeline, instead of being separate loops.',
+  },
+  {
+    question: 'Which one do I pay monthly?',
+    answer: `Pika bills on a plan. Filmoyo’s personal license is $${personalPrice} once. Credits inside Filmoyo are still finite.`,
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Filmoyo vs. Pika Labs: Which AI Video Tool is Better?"
+  description="Filmoyo vs Pika Labs: Pika is for short loops and motion tests. Filmoyo is a one-time studio for a finished scene with the same character from shot to shot."
+  canonicalURL="/filmoyo-vs-pika"
+  schema={faqSchema}
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Filmoyo vs Pika', href: '/filmoyo-vs-pika' },
+      ]}
+    />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">Comparison</p>
+      <h1>Filmoyo vs. Pika Labs</h1>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        Pika is useful when you want a short loop or a motion test. Filmoyo is for a scene that has a beginning, a cast, and a cut. One is for experimenting. The other is for finishing a film.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <div class="section-head">
+        <p class="eyebrow">Side by side</p>
+        <h2 class="section-title">Loops versus a story you can follow.</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th scope="col"> </th>
+              <th scope="col">Pika Labs</th>
+              <th scope="col">Filmoyo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr>
+                <td>{row.label}</td>
+                <td>{row.pika}</td>
+                <td>{row.filmoyo}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Make the finished scene →</AffiliateCta>
+      </div>
+      <p class="lede">
+        A loop can look clever and still be a dead end. The next prompt is a new roll of the dice, so the person in the snow is not reliably the person from the jungle. Filmoyo’s public demo keeps the Wayfinder recognizable across those places because the reference sheet goes into every shot. You still approve the frames. The lock is the point of the studio, not a side effect.
+      </p>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Lock the cast →</AffiliateCta>
+      </div>
+      <div class="section-head">
+        <p class="eyebrow">Four shots, or four loops</p>
+        <h2 class="section-title">What happens when the story needs a second scene.</h2>
+        <p class="lede">
+          In Pika, a strong loop is the win. You prompt a motion, watch a few seconds, and stop. Ask for the next place, the jungle after the dunes, and you are generating again. The face is along for the ride only if the new roll happens to match. That is fine for a test. It is a broken film if the audience was supposed to follow one person.
+        </p>
+        <p class="lede">
+          In Filmoyo the second scene is another shot on the same timeline. The Casting Vault already has the actor. Character Lock puts that sheet into the new frame. You set angle, shot type, and light on the Director’s Canvas, approve the still, then animate. Four approved shots stitch into one file. The personal license is ${personalPrice} once. Pika stays the better toy when all you wanted was the loop.
+        </p>
+      </div>
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">When the experiment is enough.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+      <RelatedLinks extra={[{ href: '/filmoyo-vs-runway', label: 'Filmoyo vs Runway' }]} />
+      <div class="final-band">
+        <p class="eyebrow">Finish the film</p>
+        <h2 class="section-title">Keep Pika for a loop. Use Filmoyo when the story continues.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          The <a class="text-link" href="/">review</a>, the <a class="text-link" href="/filmoyo-pricing">${personalPrice} and $37 licenses</a>, and the <a class="text-link" href="/filmoyo-bonus">bonuses</a>.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

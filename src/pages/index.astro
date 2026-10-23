@@ -1,0 +1,504 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Icon from '../components/Icon.astro';
+import { affiliateUrl, commercialAddon, personalPrice } from '../lib/affiliate';
+
+const shots = [
+  {
+    src: '/images/character-lock-1.jpg',
+    label: 'Dunes',
+    alt: 'The Wayfinder walking desert dunes at sunset, goggles up and a scarf in the wind',
+  },
+  {
+    src: '/images/character-lock-2.jpg',
+    label: 'Jungle',
+    alt: 'The Wayfinder standing in a jungle river at night, holding a torch and a sealed letter',
+  },
+  {
+    src: '/images/character-lock-3.jpg',
+    label: 'Snow',
+    alt: 'The Wayfinder on a snow pass, from Filmoyo’s public Character Lock demo',
+  },
+  {
+    src: '/images/character-lock-4.jpg',
+    label: 'Market',
+    alt: 'The Wayfinder in a neon market at night, from Filmoyo’s public Character Lock demo',
+  },
+  {
+    src: '/images/character-lock-5.jpg',
+    label: 'Cliff',
+    alt: 'The Wayfinder on a sea cliff in a storm, from Filmoyo’s public Character Lock demo',
+  },
+  {
+    src: '/images/character-lock-6.jpg',
+    label: 'Summit',
+    alt: 'The Wayfinder at a mountain cabin at sunrise, holding the sealed letter',
+  },
+];
+
+const features = [
+  {
+    icon: 'lock',
+    title: 'Character Lock',
+    text: 'Never lose the face between cuts. Lock the actor once, then take that same person into the jungle, the city, or the snow. You still approve the frame, so a bad still never becomes the shot.',
+  },
+  {
+    icon: 'frame',
+    title: 'Frame-First Direction',
+    text: 'Nothing moves until you say so. On the Director’s Canvas you set the angle, the shot type, and the light. Filmoyo renders the still, marks it frame-ready, and only then animates the picture you approved.',
+  },
+  {
+    icon: 'cast',
+    title: 'AI Director & Casting Vault',
+    text: 'Stop describing the lead from scratch. The Casting Vault holds 9,500+ character images and 1,230 avatars, or you build someone from a sentence. The AI Director turns one logline into the storyboard those actors walk through.',
+  },
+  {
+    icon: 'price',
+    title: 'One-Time Pricing',
+    text: `The personal studio is $${personalPrice} once. There is no monthly fee. 600 Core and 150 PRO credits are included. Top up only if you want more.`,
+  },
+  {
+    icon: 'license',
+    title: 'Commercial License',
+    text: `Personal use covers your own projects and links. The right to sell films to clients is a $${commercialAddon} add-on on the order form.`,
+  },
+  {
+    icon: 'clips',
+    title: '70+ Demo Clips',
+    text: 'The sales page shows the same casts across genres, in vertical and widescreen. The stills on this page are from that public demo.',
+  },
+];
+
+const included = [
+  'AI Director: one sentence becomes a drafted storyboard',
+  'Character Lock, plus locations that stay the same set',
+  '9,500+ character images, or build your own',
+  'Frame controls for angle, shot type, and lighting',
+  'Scene timeline and a one-click stitch',
+  'Watermark-free download',
+  'Vertical or widescreen, chosen per film',
+  '600 Core credits and 150 PRO credits',
+  '30-day guarantee on the license, as stated by the vendor',
+];
+
+const pros = [
+  'The public demo keeps one explorer, the Wayfinder, recognizable from the dunes to a jungle river to a mountain summit.',
+  'You approve a still before it animates, instead of re-rolling a finished clip and hoping the face survives.',
+  `$${personalPrice} once, not another studio subscription. The vendor states a 30-day guarantee on the license.`,
+  'Finished films download without a Filmoyo watermark, and a saved character can be reused in the next film.',
+  'Each film can be vertical for a feed or widescreen for a longer cut.',
+];
+
+const cons = [
+  'Credits are finite. The box includes 600 Core and 150 PRO. The vendor says separately purchased top-up packs are non-refundable.',
+  'A sentence drafts the film. You still approve or regenerate frames. A vague brief makes a vague draft.',
+  'This is stylized AI footage. The vendor says so on the sales page. It is not a live crew on a set.',
+  `Client work needs the $${commercialAddon} commercial license. The $${personalPrice} personal license does not include the right to sell the films.`,
+  'The vendor has listed extra bonuses as launch-week only. Confirm those on the checkout. The filmmaker toolkit on this site is separate, and you claim it by forwarding the receipt.',
+];
+
+const audiences = [
+  {
+    title: 'Content Creators',
+    text: 'You want a character people can recognize in the next film, not a new face every time the shot changes.',
+  },
+  {
+    title: 'Marketers',
+    text: 'You already have a link. The job is a film people stop on, downloaded and posted with that link under it.',
+  },
+  {
+    title: 'Agencies',
+    text: 'Same studio. Add the commercial license if a client is paying you for the film. That license is permission to sell the work, not a client list.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is Filmoyo Director?',
+    answer: `An AI film studio you run by typing. One sentence drafts a storyboard. You cast the characters, approve each frame, and stitch a finished film. The personal license is $${personalPrice} once.`,
+  },
+  {
+    question: 'What is Character Lock?',
+    answer:
+      'When you cast someone, from the library or from a description, Filmoyo locks a reference sheet and uses it in every shot. The sales page shows this with the Wayfinder, the same explorer in six different places. Locations can lock the same way.',
+  },
+  {
+    question: 'Is Filmoyo a monthly subscription?',
+    answer:
+      'No. Filmoyo Director is a one-time purchase. You are not billed every month to keep the studio. If you use up the included credits, topping up is optional.',
+  },
+  {
+    question: 'What is the difference between personal and commercial?',
+    answer: `Same studio and same credits. Personal ($${personalPrice}) covers your own projects and links. Commercial is $${commercialAddon} more on the order form and adds the right to sell films to clients.`,
+  },
+  {
+    question: 'What are credits, and do they run out?',
+    answer:
+      'Credits are fuel for drafts, casting, frames, animation, and stitching. The box includes 600 Core credits and 150 PRO credits. They are not unlimited. The vendor says separately purchased top-up packs are non-refundable.',
+  },
+  {
+    question: 'What if I want a refund?',
+    answer:
+      'The vendor states a 30-day money-back guarantee on the license. If the studio does not do what the sales page describes, their terms say to contact support within 30 days. Read the refund policy on the checkout before you pay. Credit top-ups are excluded from that guarantee.',
+  },
+];
+
+const site = Astro.site ?? new URL('https://filmoyoreview.com');
+const pageUrl = new URL('/', site).href;
+const image = new URL('/images/demo-poster.jpg', site).href;
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Filmoyo Director',
+  description:
+    'AI film studio that drafts a film from one sentence, locks characters across shots, and lets you approve each frame before it animates.',
+  brand: { '@type': 'Brand', name: 'Filmoyo' },
+  image,
+  url: pageUrl,
+  offers: {
+    '@type': 'Offer',
+    price: String(personalPrice),
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: affiliateUrl,
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.8',
+    bestRating: '5',
+    worstRating: '1',
+    ratingCount: '1',
+    reviewCount: '1',
+  },
+  review: {
+    '@type': 'Review',
+    author: { '@type': 'Organization', name: 'Filmoyo Review' },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: '4.8',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title="Filmoyo Director Review 2026: Direct Your Own AI Film From a Single Sentence"
+  description="Filmoyo Director review: Character Lock keeps the same cast from scene 1 to scene 10. $27 once, frame-first approval, and who it is actually for."
+  ogImage="/images/demo-poster.jpg"
+  schema={[productSchema, faqSchema]}
+>
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1>
+        <span class="hero-kicker">Filmoyo Director Review 2026</span>
+        Direct Your Own AI Film From a Single Sentence.
+      </h1>
+      <p class="subhead">
+        Stop generating random clips. Filmoyo is the only AI film studio with Character Lock—so your actors stay the same from scene 1 to scene 10. Here is my full breakdown.
+      </p>
+      <div class="hero-actions">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get Filmoyo Director + My Bonuses&nbsp;→</AffiliateCta>
+      </div>
+      <div class="demo-frame">
+        <img
+          src="/images/demo-poster.jpg"
+          width="1280"
+          height="704"
+          alt="A hand holding a sealed letter, a still from Filmoyo’s public demo film The Letter"
+        />
+        <div class="demo-shade">
+          <span class="play-button" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 22 22">
+              <path d="M7 4.5v13l12-6.5-12-6.5z" fill="currentColor"></path>
+            </svg>
+          </span>
+          <p>Watch Demo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="verdict-wrap" id="verdict" aria-label="Quick verdict">
+    <div class="container">
+      <article class="verdict-card">
+        <div class="verdict-score">
+          <p class="stars" style="--rating: 4.8" aria-hidden="true">★★★★★</p>
+          <p class="rating">4.8<span class="rating-max">/5</span></p>
+          <p class="rating-label">Rating</p>
+        </div>
+        <div class="verdict-copy">
+          <p class="verdict-review">
+            Filmoyo Director is the first AI video tool that behaves like a studio instead of a slot machine. Character Lock holds one actor from the jungle to the snow, and nothing animates until you approve the still. Buy it for a finished short, not another three-second loop.
+          </p>
+          <p class="verdict-best">Best for: Content Creators, Marketers, and Agencies.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="problem">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">The problem</p>
+        <h2 class="section-title">Random clips are not a film.</h2>
+      </div>
+      <div class="problem-list">
+        <article class="problem-item">
+          <span class="x-mark" aria-hidden="true">×</span>
+          <p>You've tried AI video generators, but the characters change faces every time you cut to a new angle.</p>
+        </article>
+        <article class="problem-item">
+          <span class="x-mark" aria-hidden="true">×</span>
+          <p>You spend hours re-rolling prompts just to get one usable clip.</p>
+        </article>
+        <article class="problem-item">
+          <span class="x-mark" aria-hidden="true">×</span>
+          <p>You want to make a short film, but you're stuck making 3-second loops.</p>
+        </article>
+      </div>
+      <p class="solution">
+        Filmoyo fixes this. It gives you a Director's Canvas, a Casting Vault of 9,500+ character images, and a Frame-First approval system.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2 class="section-title">Three steps from a sentence to a locked cast.</h2>
+        <p class="lede">These are screens from the public Filmoyo workspace, not a mockup of someone else’s editor.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div>
+            <p class="step-num">STEP 1</p>
+            <h3>Type a Logline</h3>
+            <p>
+              One sentence is the brief. The AI Director breaks it into shots. In the workspace you still see the prompt, the angle, the shot type, and the lighting, and the character is already attached.
+            </p>
+          </div>
+          <figure class="screen step-media">
+            <img
+              class="frame-top"
+              src="/images/logline.jpg"
+              width="1600"
+              height="900"
+              alt="Filmoyo Direct tab with a shot prompt, close angle, reaction shot type, and the Wayfinder selected"
+              loading="lazy"
+            />
+            <figcaption>Director’s canvas · the shot prompt before anything renders</figcaption>
+          </figure>
+        </article>
+        <article class="step reverse">
+          <div>
+            <p class="step-num">STEP 2</p>
+            <h3>Approve Every Frame</h3>
+            <p>
+              Filmoyo renders the still first. The workspace marks a shot FRAME READY before it animates. Regenerate the picture until it is the one you meant, then let it move. The timeline under the frame is the film, scene by scene.
+            </p>
+          </div>
+          <figure class="screen step-media">
+            <img
+              src="/images/storyboard.jpg"
+              width="1600"
+              height="900"
+              alt="Filmoyo storyboard with a desert close-up marked FRAME READY and a timeline of scene folders"
+              loading="lazy"
+            />
+            <figcaption>Frame-first storyboard · approve the still, then animate</figcaption>
+          </figure>
+        </article>
+        <article class="step">
+          <div>
+            <p class="step-num">STEP 3</p>
+            <h3>Lock Your Characters</h3>
+            <p>
+              Cast from the vault or describe someone new. Character Lock keeps a reference sheet — face, build, wardrobe — and the vendor says that sheet is sent into every shot. The six frames below are the Wayfinder demo used to show it.
+            </p>
+          </div>
+          <figure class="screen step-media">
+            <img
+              class="frame-top"
+              src="/images/casting-vault.jpg"
+              width="1600"
+              height="900"
+              alt="Filmoyo Cast and Sets panel showing the Wayfinder reference sheet with a regenerate option"
+              loading="lazy"
+            />
+            <figcaption>Casting panel · the Wayfinder reference sheet</figcaption>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Key features</p>
+        <h2 class="section-title">What you actually get on day one.</h2>
+      </div>
+      <div class="feature-grid">
+        {features.map((feature) => (
+          <article class="feature-card">
+            <div class="feature-icon">
+              <Icon name={feature.icon} />
+            </div>
+            <h3>{feature.title}</h3>
+            <p>{feature.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="proof">
+        <figure class="screen">
+          <img
+            src="/images/workspace.jpg"
+            width="1600"
+            height="842"
+            alt="Filmoyo workspace with the cast list, including the Chairman and the Wayfinder, and a shot timeline"
+            loading="lazy"
+          />
+          <figcaption>The workspace · cast on the left, the shot timeline along the bottom</figcaption>
+        </figure>
+        <div>
+          <h3 class="section-title" style="font-size: 1.6rem; margin-bottom: 0.4rem;">Same face. Six worlds.</h3>
+          <p class="lede" style="margin-bottom: 1rem;">
+            Stills from the public Character Lock demo. Jacket, goggles, and the silver streak in her hair carry from shot to shot.
+          </p>
+          <ul class="filmstrip">
+            {shots.map((shot) => (
+              <li>
+                <figure>
+                  <img src={shot.src} width="1280" height="704" alt={shot.alt} loading="lazy" />
+                  <figcaption>{shot.label}</figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Pricing</p>
+        <h2 class="section-title">The front-end studio is ${personalPrice}. Once.</h2>
+        <p class="lede">There is no monthly fee to keep it. A commercial license is optional, and it is ${commercialAddon} more on the order form.</p>
+      </div>
+      <div class="price-layout">
+        <article class="price-card">
+          <p class="eyebrow">Personal license</p>
+          <p class="price">${personalPrice}<span> once</span></p>
+          <p class="price-note">No subscription. 30-day guarantee on the license, as the vendor states it.</p>
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+          <p class="fine">Commercial license +${commercialAddon} (${personalPrice + commercialAddon} total) if you need the right to sell the work to clients. Most buyers can skip it.</p>
+        </article>
+        <article class="surface panel">
+          <h3>In the ${personalPrice} studio</h3>
+          <ul class="check-list">
+            {included.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pros-cons">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Honest assessment</p>
+        <h2 class="section-title">Pros and cons</h2>
+      </div>
+      <div class="split">
+        <article class="surface panel">
+          <h3>Where it holds up</h3>
+          <ul class="pro-list">
+            {pros.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="surface panel">
+          <h3>Where it doesn’t</h3>
+          <ul class="con-list">
+            {cons.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="who">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Who it’s for</p>
+        <h2 class="section-title">Three kinds of buyer. Same studio.</h2>
+      </div>
+      <div class="audience-grid">
+        {audiences.map((person) => (
+          <article class="audience-card">
+            <h3>{person.title}</h3>
+            <p>{person.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">Questions worth answering before checkout.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="final">
+    <div class="container">
+      <div class="final-band">
+        <p class="eyebrow">Final verdict · 4.8/5</p>
+        <h2 class="section-title">Start here if the face has to survive the cut.</h2>
+        <p class="lede narrow">
+          I rate Filmoyo Director 4.8 out of 5 for people who are tired of characters changing between shots. Frame-first approval and the one-time price are the rest of that score. It is not a 5, because credits run out and selling the work costs an extra ${commercialAddon}. The filmmaker toolkit is on the bonuses page.
+        </p>
+        <div class="hero-actions">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+          <a class="text-link" href="/filmoyo-bonus">Claim the filmmaker bonuses</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

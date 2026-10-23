@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="Privacy policy for Filmoyo Review. How this independent site handles cookies, analytics, and email to contact@filmoyoreview.com."
+  canonicalURL="/privacy-policy"
+  showCommerce={false}
+>
+  <article class="legal">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Privacy policy', href: '/privacy-policy' },
+      ]}
+    />
+    <p class="eyebrow" style="margin-top: 1.2rem;">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated October 23, 2026.</p>
+    <p>
+      This policy covers filmoyoreview.com, an independent review site. It does not cover the Filmoyo product, the checkout, or Explaindio LLC. Those sites have their own policies.
+    </p>
+
+    <h2>What we collect</h2>
+    <p>
+      You can read the site without an account. If you email <a href="mailto:contact@filmoyoreview.com">contact@filmoyoreview.com</a>, or <a href="mailto:bonuses@filmoyoreview.com">bonuses@filmoyoreview.com</a> to claim a bonus, we receive whatever you send, including your address and any receipt you attach. We use that mail to answer you or to check a purchase. We do not sell it.
+    </p>
+
+    <h2>Cookies and analytics</h2>
+    <p>
+      The site and its host may store basic technical logs, such as browser type and IP address, to keep the site online and to block abuse. We may use cookies or a privacy-respecting analytics tool to count visits and see which pages are read. Those tools are for understanding traffic, not for building a profile we sell.
+    </p>
+    <p>
+      Affiliate links may set cookies on the seller’s or JVZoo’s domain so a purchase can be credited. That cookie is controlled by them, under their policy.
+    </p>
+
+    <h2>How long we keep email</h2>
+    <p>
+      We keep bonus and support email for as long as we need it to deliver files, handle a dispute, or meet a legal duty, and then we delete it or strip the receipt.
+    </p>
+
+    <h2>Your choices</h2>
+    <ul>
+      <li>You can browse without emailing us.</li>
+      <li>You can ask what we still have from an email you sent, or ask us to delete it, at contact@filmoyoreview.com.</li>
+      <li>You can block cookies in your browser. The pages will still load. An affiliate click may not be credited.</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>
+      Privacy questions: <a href="mailto:contact@filmoyoreview.com">contact@filmoyoreview.com</a>.
+    </p>
+    <p>
+      Related: <a href="/affiliate-disclosure">Affiliate disclosure</a> · <a href="/terms">Terms of service</a>
+    </p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { personalPrice } from '../lib/affiliate';
+
+const shots = [
+  { src: '/images/character-lock-1.jpg', label: 'Dunes', alt: 'The Wayfinder walking desert dunes at sunset' },
+  { src: '/images/character-lock-2.jpg', label: 'Jungle', alt: 'The Wayfinder standing in a jungle river at night' },
+  { src: '/images/character-lock-3.jpg', label: 'Snow', alt: 'The Wayfinder on a snow pass in the Filmoyo demo' },
+  { src: '/images/character-lock-6.jpg', label: 'Summit', alt: 'The Wayfinder at a mountain cabin holding a sealed letter' },
+];
+
+const uses = [
+  {
+    title: 'A series',
+    text: 'Episode two can open on the same person as episode one, because the reference sheet is saved, not redrawn from a vague prompt.',
+  },
+  {
+    title: 'A recurring mascot',
+    text: 'An ad can bring the same spokesperson back next week. Selling that ad to a client still needs the commercial license.',
+  },
+  {
+    title: 'A story with cuts',
+    text: 'A wide shot, a close-up, and a new location only work as one story if the audience recognizes the actor.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'What does Character Lock actually lock?',
+    answer:
+      'A reference sheet for that character: the face, the build, and the wardrobe. Filmoyo sends that sheet into each shot instead of inventing a new person from the prompt alone.',
+  },
+  {
+    question: 'Do Runway and Pika do this?',
+    answer:
+      'They are built to render the clip you asked for. The next scene is often a new generation, and the face drifts unless you fight it. Filmoyo is built so the sheet stays with the cast.',
+  },
+  {
+    question: 'Is the face perfect in every frame?',
+    answer:
+      'The public demo keeps the Wayfinder recognizable across dunes, jungle, snow, and a summit. You still approve frames. A sloppy description produces a sloppy sheet.',
+  },
+  {
+    question: 'Where do the 9,500 images come from?',
+    answer:
+      'The sales page lists 9,500+ character images and 1,230 unique avatars, or you describe someone and build them. That library is the Casting Vault.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Filmoyo Character Lock Explained: The End of Changing Faces"
+  description="Filmoyo Character Lock keeps one actor's face, build, and wardrobe across shots. Here is why clip tools redraw the face, and how the Casting Vault is different."
+  canonicalURL="/filmoyo-character-lock-explained"
+  schema={faqSchema}
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Character Lock', href: '/filmoyo-character-lock-explained' },
+      ]}
+    />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">The feature</p>
+      <h1>Filmoyo Character Lock: Why Your Actors Finally Stay the Same</h1>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        The usual failure in AI video is the face. You cut to a new place and the lead comes back as a stranger. Character Lock is Filmoyo’s answer: one reference sheet, used in every shot.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <div class="section-head">
+        <p class="eyebrow">The problem</p>
+        <h2 class="section-title">A new prompt often means a new person.</h2>
+        <p class="lede">
+          Clip tools such as Runway and Pika render the shot in front of them. Ask for the jungle, then the snow, then the city, and each generation can invent a different face. The story breaks because the audience cannot tell it is the same character.
+        </p>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Stop redrawing the lead →</AffiliateCta>
+      </div>
+
+      <div class="section-head">
+        <p class="eyebrow">Character Lock</p>
+        <h2 class="section-title">Pick the actor once. Take them everywhere.</h2>
+        <p class="lede">
+          You choose someone from the Casting Vault, 9,500+ character images and 1,230 avatars, or you describe a person and Filmoyo builds the sheet. That sheet, face, build, and clothes, is what the studio injects into the jungle, the snow, and the city. The stills below are the Wayfinder from the public demo.
+        </p>
+      </div>
+      <ul class="filmstrip">
+        {shots.map((shot) => (
+          <li>
+            <figure>
+              <img src={shot.src} width="1280" height="704" alt={shot.alt} loading="lazy" />
+              <figcaption>{shot.label}</figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Lock a character →</AffiliateCta>
+      </div>
+
+      <div class="section-head">
+        <p class="eyebrow">Use it for</p>
+        <h2 class="section-title">Anywhere the audience has to recognize someone.</h2>
+      </div>
+      <div class="feature-grid">
+        {uses.map((item) => (
+          <article class="feature-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Get the Casting Vault →</AffiliateCta>
+      </div>
+
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">What the lock does, and what it does not.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <RelatedLinks extra={[{ href: '/filmoyo-vs-runway', label: 'Filmoyo vs Runway' }]} />
+      <div class="final-band">
+        <p class="eyebrow">${personalPrice} once</p>
+        <h2 class="section-title">The cast is the reason to buy the studio.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          See the <a class="text-link" href="/">full review</a>, the <a class="text-link" href="/filmoyo-pricing">$27 and $37 licenses</a>, and the <a class="text-link" href="/filmoyo-bonus">bonuses</a>.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

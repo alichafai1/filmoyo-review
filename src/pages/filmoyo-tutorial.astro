@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+
+const steps = [
+  {
+    name: 'Log in',
+    text: 'After purchase you get the studio account. Open it. The workspace is where Cast, Direct, and Stitch Film live.',
+  },
+  {
+    name: 'Type the logline',
+    text: 'On Direct, the sentence becomes shots. You will see the prompt, the angle, the shot type, the lighting, and who is in the shot.',
+  },
+  {
+    name: 'Approve the frames',
+    text: 'Filmoyo renders a still and can mark it FRAME READY. Regenerate until the picture is the one you meant. Nothing should move before that.',
+  },
+  {
+    name: 'Export',
+    text: 'Stitch the approved shots into one film and download it. The sales page says the file is watermark-free.',
+  },
+];
+
+const rooms = [
+  {
+    title: 'Director Canvas',
+    text: 'The place you direct. A logline comes apart into shots, and each shot has angle, type, and light before you spend the animation.',
+    src: '/images/logline.jpg',
+    alt: 'Filmoyo Direct workspace with a shot prompt',
+  },
+  {
+    title: 'Casting Vault',
+    text: 'Cast and Sets. Pick or describe a character, keep the reference sheet, and reuse them. The vault on the sales page is 9,500+ images.',
+    src: '/images/casting-vault.jpg',
+    alt: 'Filmoyo Cast and Sets panel with a character sheet',
+  },
+  {
+    title: 'Frame approval',
+    text: 'The still sits in the timeline with a FRAME READY mark. That is the gate between a picture and a moving shot.',
+    src: '/images/storyboard.jpg',
+    alt: 'Filmoyo storyboard showing a frame ready to animate',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Do I install an app?',
+    answer: 'The vendor describes a studio you log into after purchase. This tutorial follows the workspace shown on the public sales page, not a desktop installer.',
+  },
+  {
+    question: 'What if a frame is wrong?',
+    answer: 'Regenerate the still. Approve it only when the face, the place, and the light match the shot you asked for.',
+  },
+  {
+    question: 'Where is Character Lock in this walkthrough?',
+    answer: 'In Cast and Sets, on the reference sheet. If you skip that and only type a new prompt, you are back to hoping the face matches.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to use Filmoyo Director',
+  description: 'Log in, type a logline, approve each frame, then stitch and export the film.',
+  step: steps.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.name,
+    text: step.text,
+  })),
+};
+---
+
+<BaseLayout
+  title="How to Use Filmoyo Director: Complete Tutorial (2026)"
+  description="Filmoyo Director tutorial for 2026: log in, type a logline on the Director Canvas, cast from the vault, approve frames, then stitch and export."
+  canonicalURL="/filmoyo-tutorial"
+  schema={[faqSchema, howToSchema]}
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Tutorial', href: '/filmoyo-tutorial' },
+      ]}
+    />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">Tutorial · 2026</p>
+      <h1>Filmoyo Director Tutorial: From Logline to Film</h1>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        Three parts of the workspace matter: the Director Canvas, the Casting Vault, and the frame you approve before it animates. This is the path through them.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <div class="section-head">
+        <p class="eyebrow">The interface</p>
+        <h2 class="section-title">Canvas, cast, then the still.</h2>
+      </div>
+      {rooms.map((room) => (
+        <article class="step">
+          <div>
+            <h3>{room.title}</h3>
+            <p>{room.text}</p>
+          </div>
+          <figure class="screen step-media">
+            <img class="frame-top" src={room.src} width="1600" height="900" alt={room.alt} loading="lazy" />
+          </figure>
+        </article>
+      ))}
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Open the studio →</AffiliateCta>
+      </div>
+
+      <div class="section-head">
+        <p class="eyebrow">The order</p>
+        <h2 class="section-title">Login, logline, frames, export.</h2>
+      </div>
+      <ol class="claim-steps">
+        {steps.map((step) => (
+          <li>
+            <strong>{step.name}</strong>
+            <span>{step.text}</span>
+          </li>
+        ))}
+      </ol>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Follow the four steps →</AffiliateCta>
+      </div>
+
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">The parts people skip.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+      <RelatedLinks extra={[{ href: '/how-to-create-ai-short-film', label: 'How to create an AI short' }]} />
+      <div class="final-band">
+        <p class="eyebrow">Practice on a real logline</p>
+        <h2 class="section-title">The buttons in the workspace are Cast, Direct, and Stitch.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          Read the <a class="text-link" href="/">review</a> for the verdict, <a class="text-link" href="/filmoyo-pricing">pricing</a> before you pick a license, and the <a class="text-link" href="/filmoyo-bonus">bonuses</a> if you want starters and a storyboard template.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

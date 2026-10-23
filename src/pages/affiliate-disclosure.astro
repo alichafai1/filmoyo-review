@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<BaseLayout
+  title="Affiliate Disclosure"
+  description="Filmoyo Review is an independent site. We may earn a commission if you buy through our links, including JVZoo, at no extra cost to you."
+  canonicalURL="/affiliate-disclosure"
+  showCommerce={false}
+>
+  <article class="legal">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Affiliate disclosure', href: '/affiliate-disclosure' },
+      ]}
+    />
+    <p class="eyebrow" style="margin-top: 1.2rem;">Legal</p>
+    <h1>Affiliate Disclosure</h1>
+    <p class="updated">Last updated October 23, 2026.</p>
+    <p>
+      Filmoyo Review is an independent website. We are not Filmoyo, and we are not Explaindio LLC, the company that sells the software.
+    </p>
+    <p>
+      Some links on this site are affiliate links. If you buy through them, we may earn a commission from the seller, including through JVZoo, at no extra cost to you. The price you pay is the price on the checkout.
+    </p>
+    <p>
+      Our reviews, rankings, and guides are our own opinions. A commission does not change the $27 personal license, the $10 commercial add-on, or the limits we describe, including credits and the fact that the footage is stylized AI video.
+    </p>
+    <p>
+      You should read the vendor’s own terms, refund policy, and license choices on the order form before you pay. Questions about this disclosure can go to <a href="mailto:contact@filmoyoreview.com">contact@filmoyoreview.com</a>.
+    </p>
+    <p>
+      Related: <a href="/privacy-policy">Privacy policy</a> · <a href="/terms">Terms of service</a>
+    </p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { commercialAddon, personalPrice } from '../lib/affiliate';
+
+const commercialTotal = personalPrice + commercialAddon;
+
+const fears = [
+  {
+    title: '“AI videos look fake.”',
+    text: 'Filmoyo makes stylized cinematic footage, not a live-action crew on a set. The vendor says this in plain language. The public demo looks like a directed short, with the same explorer across different worlds. Judge those frames. Do not expect a documentary of a real person.',
+  },
+  {
+    title: '“There are hidden fees.”',
+    text: `The personal studio is $${personalPrice} once. Selling the videos to clients requires the commercial license, which is $${commercialAddon} more, $${commercialTotal} total, and it is a checkbox on the order form. There is no monthly fee on the license. Extra credits are optional if you use up the 600 Core and 150 PRO included in the box.`,
+  },
+  {
+    title: '“The credits run out.”',
+    text: 'They can. Filmoyo uses a credit system. Drafts, casting, frames, animation, and stitching spend credits. The included pack is the fuel for the first films, not an unlimited tap. Top-ups are a separate purchase, and the vendor says those packs are non-refundable.',
+  },
+];
+---
+
+<BaseLayout
+  title="Is Filmoyo Director a Scam? Honest 2026 Review"
+  description="Is Filmoyo Director a scam? It is a real AI film studio from a named vendor, $27 once, not a magic money button. Here is what the footage, the license, and the credits actually are."
+  canonicalURL="/filmoyo-legit-or-scam"
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Legit or Scam' }]} />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">Honest 2026 review</p>
+      <h1>Is Filmoyo Director a Scam?</h1>
+      <p class="verdict-pill" style="margin-top: 1rem;">Legit</p>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        Filmoyo Director is a real AI film tool. The public pages credit Andrew Darius, a veteran software vendor, and the company behind it is Explaindio LLC. It is not a magic money button. You type a sentence, approve frames, and download a stylized film. Views, clients, and income are not included.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <div class="section-head">
+        <p class="eyebrow">The fears</p>
+        <h2 class="section-title">Three worries, answered with the actual offer.</h2>
+      </div>
+      <div class="fear-grid">
+        {fears.map((fear) => (
+          <article class="surface panel fear-card">
+            <h2>{fear.title}</h2>
+            <p>{fear.text}</p>
+          </article>
+        ))}
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">See the studio for yourself →</AffiliateCta>
+      </div>
+      <div class="split">
+        <article class="surface panel">
+          <h3>What you can count on</h3>
+          <ul class="check-list">
+            <li>A named product with a public sales page, a workspace, and demo frames.</li>
+            <li>Character Lock, shown with the same explorer across six shots.</li>
+            <li>A one-time license, with a 30-day guarantee the vendor states on that license.</li>
+            <li>A clear split between posting your own films and selling them to clients.</li>
+          </ul>
+        </article>
+        <article class="surface panel">
+          <h3>What this is not</h3>
+          <ul class="con-list">
+            <li>A guarantee of views, clients, or profit.</li>
+            <li>Live-action footage of real actors on a set.</li>
+            <li>Unlimited generation. Credits are the meter.</li>
+            <li>Permission to sell the work, unless you add the ${commercialAddon} commercial license.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Get Filmoyo Director →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="final-band">
+        <p class="eyebrow">Verdict</p>
+        <h2 class="section-title">Legit tool. Ordinary limits.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          Buy it if you want a director’s workspace and a cast that can hold from shot to shot. Skip it if you wanted a machine that prints income. The full breakdown, including the 4.8 rating, is on the review.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+          <a class="text-link" href="/#verdict">Read the full review</a>
+        </div>
+        <div class="hero-actions" style="margin-top: 0.8rem;">
+          <AffiliateCta>Open the checkout →</AffiliateCta>
+          <a class="text-link" href="/filmoyo-pricing">Compare ${personalPrice} and ${commercialTotal}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

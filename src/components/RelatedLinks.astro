@@ -1,0 +1,29 @@
+---
+interface Link {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  extra?: Link[];
+}
+
+const extras = Astro.props.extra ?? [];
+const links = [
+  { href: '/', label: 'Full Filmoyo review' },
+  { href: '/filmoyo-pricing', label: '$27 vs $37 pricing' },
+  { href: '/filmoyo-bonus', label: 'Filmmaker bonuses' },
+  ...extras,
+];
+---
+
+<nav class="related" aria-label="Related reading">
+  <p class="eyebrow">Keep reading</p>
+  <ul>
+    {links.map((link) => (
+      <li>
+        <a href={link.href}>{link.label}</a>
+      </li>
+    ))}
+  </ul>
+</nav>

@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { personalPrice } from '../lib/affiliate';
+
+const faqs = [
+  {
+    question: 'Can I post without showing my face?',
+    answer:
+      'Yes. The cast is generated. You direct from a sentence and a reference sheet. Your face does not have to be in the film.',
+  },
+  {
+    question: 'Will the same character show up in the next video?',
+    answer:
+      'That is what Character Lock is for. Save the reference sheet and use it again. The public demo keeps one explorer recognizable across six places. A vague new prompt, with no lock, will not.',
+  },
+  {
+    question: 'Does this make a video go viral?',
+    answer:
+      'No. Filmoyo makes the film. Views on YouTube or TikTok are not part of the purchase. A consistent cast can make a channel recognizable. It cannot promise a crowd.',
+  },
+  {
+    question: 'Which license do I need for my own channel?',
+    answer: `Your own channel and your own links are the personal studio, $${personalPrice} once. If a client pays you for the film, add the $10 commercial license.`,
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Filmoyo for Content Creators: Make Faceless Cinematic Videos"
+  description="Filmoyo for content creators who want cinematic YouTube and TikTok films without showing their face. Character Lock keeps the same AI cast across videos. $27 once."
+  canonicalURL="/filmoyo-for-content-creators"
+  schema={faqSchema}
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'For content creators', href: '/filmoyo-for-content-creators' },
+      ]}
+    />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">For channels</p>
+      <h1>Filmoyo for Content Creators: Build a Faceless Cinematic Channel</h1>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        You want storytelling videos on YouTube and TikTok. You do not want your face in them, and stock footage looks like every other channel. A locked cast gives the series a face that is not yours.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <div class="section-head">
+        <p class="eyebrow">The problem</p>
+        <h2 class="section-title">Stock clips do not build a character.</h2>
+      </div>
+      <div class="problem-list">
+        <article class="problem-item">
+          <span class="x-mark" aria-hidden="true">×</span>
+          <p>You want a story people can follow, and you do not want to perform it on camera.</p>
+        </article>
+        <article class="problem-item">
+          <span class="x-mark" aria-hidden="true">×</span>
+          <p>Stock footage is cheap to spot. The next video looks unrelated to the last one.</p>
+        </article>
+        <article class="problem-item">
+          <span class="x-mark" aria-hidden="true">×</span>
+          <p>Most AI clip tools redraw the face every time you ask for a new angle.</p>
+        </article>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Replace the stock pile →</AffiliateCta>
+      </div>
+
+      <div class="section-head">
+        <p class="eyebrow">The solution</p>
+        <h2 class="section-title">Cast the channel once. Use that cast again.</h2>
+        <p class="lede">
+          Filmoyo’s casting vault is 9,500+ character images and 1,230 avatars, or you describe someone and build them. Character Lock saves the reference sheet and sends it into every shot, then into the next film. Vertical for a feed, widescreen for a longer cut. The personal studio is ${personalPrice} once. Views are still yours to earn. The tool does not include them.
+        </p>
+      </div>
+      <figure class="screen">
+        <img
+          class="frame-top"
+          src="/images/casting-vault.jpg"
+          width="1600"
+          height="900"
+          alt="Filmoyo casting panel showing the Wayfinder character reference"
+          loading="lazy"
+        />
+        <figcaption>The Wayfinder reference sheet. Save it, and the next episode can start from the same person.</figcaption>
+      </figure>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Build the cast →</AffiliateCta>
+      </div>
+
+      <div class="section-head">
+        <p class="eyebrow">A series, not a pile of clips</p>
+        <h2 class="section-title">What a week of posts looks like.</h2>
+        <p class="lede">
+          Pick one person in the Casting Vault, or describe them once. That reference sheet is the face of the channel. On the Director’s Canvas, a logline of one or two sentences becomes the shots: a wide shot to open, a closer shot for the turn, a last frame for the ending. You set angle, shot type, and light. Filmoyo renders the still and marks it frame-ready. You approve it, then it animates. Stitch the approved shots, download without a Filmoyo watermark, and post vertical for a feed or widescreen for a longer cut.
+        </p>
+        <p class="lede">
+          The next video starts from the same sheet, not from a new prompt that invents a stranger. That is the difference between a series people can recognize and a folder of unrelated clips. The public demo does this with the Wayfinder: dunes, jungle, snow, and a summit, same jacket, same goggles, same silver streak. Locations can lock the same way, so a set does not wander either.
+        </p>
+        <p class="lede">
+          The personal studio is ${personalPrice} once, with 600 Core credits and 150 PRO credits in the box. A busy posting week can spend that fuel. Top-ups are optional, and the vendor says those packs are non-refundable. Nothing here includes views. The <a class="text-link" href="/filmoyo-pricing">pricing page</a> is where you decide if you only post your own work or need the $10 commercial add-on.
+        </p>
+      </div>
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">Faceless does not mean random.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+      <RelatedLinks extra={[{ href: '/best-ai-film-studios', label: 'Best AI film studios' }]} />
+      <div class="final-band">
+        <p class="eyebrow">Your channel, their face</p>
+        <h2 class="section-title">One cast. More than one video.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          Start with the <a class="text-link" href="/">review</a>, confirm the license on the <a class="text-link" href="/filmoyo-pricing">pricing page</a>, and pick up the <a class="text-link" href="/filmoyo-bonus">prompt and storyboard bonuses</a> after you buy.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

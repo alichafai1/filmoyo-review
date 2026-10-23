@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { personalPrice } from '../lib/affiliate';
+
+const faqs = [
+  {
+    question: 'Can Filmoyo run a YouTube channel for me?',
+    answer:
+      'No. It makes the pictures. You still pick the niche, write or outline the story, approve frames, add a voice, and upload. Automation here means you are not on camera and you are not booking a crew.',
+  },
+  {
+    question: 'Will the narrator’s “actor” match in every scene?',
+    answer:
+      'That is the Casting Vault plus Character Lock. Save the sheet and use it for the whole video. A fresh prompt with no lock will not keep the face.',
+  },
+  {
+    question: 'Does this get the channel monetized?',
+    answer:
+      'No. Views, watch time, and YouTube’s rules are outside the purchase. A consistent look can make a series recognizable. It cannot promise an audience.',
+  },
+  {
+    question: 'Which license is this?',
+    answer: `Your own channel is the personal studio, $${personalPrice} once. If a client pays for the video, add the $10 commercial license.`,
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Filmoyo for YouTube Automation: Build a Faceless Cinematic Channel"
+  description="Use Filmoyo for faceless YouTube videos. The Casting Vault keeps one AI actor through a story, history piece, or narration. $27 once. Views are not included."
+  canonicalURL="/filmoyo-for-youtube-automation"
+  schema={faqSchema}
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'YouTube automation', href: '/filmoyo-for-youtube-automation' },
+      ]}
+    />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">Faceless channels</p>
+      <h1>Filmoyo for YouTube Automation: Build a Faceless Cinematic Channel</h1>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        Story channels, history pieces, and narrated videos need pictures that feel like one show. Stock clips look rented. A new AI face every scene looks broken. The Casting Vault is how you keep one actor through the whole video without standing in front of the camera.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <div class="section-head">
+        <p class="eyebrow">The gap</p>
+        <h2 class="section-title">The script can be faceless. The picture still needs a person.</h2>
+        <p class="lede">
+          A Reddit-style story or a history narration is usually a voice and a string of shots. If every shot invents a new lead, the video feels like a slideshow of strangers. Filmoyo lets you cast that lead once, lock the sheet, and cut from a wide shot to a close-up without redrawing them.
+        </p>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Cast the channel →</AffiliateCta>
+      </div>
+      <figure class="screen">
+        <img
+          class="frame-top"
+          src="/images/casting-vault.jpg"
+          width="1600"
+          height="900"
+          alt="Filmoyo Casting Vault panel with the Wayfinder reference sheet"
+          loading="lazy"
+        />
+        <figcaption>Pick the actor for the series. The sheet is what the later shots are supposed to match.</figcaption>
+      </figure>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Get the Casting Vault →</AffiliateCta>
+      </div>
+      <div class="section-head">
+        <p class="eyebrow">What you still do</p>
+        <h2 class="section-title">The studio does not upload the video.</h2>
+        <p class="lede">
+          You choose the niche, write the beats, approve the frames, record or generate the voice somewhere else, and post. The personal studio is ${personalPrice} once. It does not include YouTube views, a monetization review, or a promise that a niche will pay. Vertical or widescreen is your call per film.
+        </p>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Start the faceless film →</AffiliateCta>
+      </div>
+      <div class="section-head">
+        <p class="eyebrow">A story video, shot by shot</p>
+        <h2 class="section-title">Hook, three beats, one locked face.</h2>
+        <p class="lede">
+          A faceless story video is usually a voice and a string of pictures. Write the hook, three beats, and the ending first. Then open the Casting Vault and choose the person who will carry those beats, from 9,500+ character images and 1,230 avatars, or from a description you write once. Character Lock keeps that sheet in the wide shot and the close-up. Frame-first approval means you see the still on the Director’s Canvas before anything moves, so a bad face never gets animated into the timeline.
+        </p>
+        <p class="lede">
+          History pieces and narrated stories work the same way. The “actor” is a guide the viewer can recognize when the scene changes, not a new stranger every eight seconds. You still record or generate the voice somewhere else, cut the approved shots to the words, and upload. Filmoyo does not post, write titles, or talk to YouTube’s monetization review. The personal license is ${personalPrice} once. Credits are the fuel, not an unlimited tap. If someone else is paying you for the video, the <a class="text-link" href="/filmoyo-pricing">commercial license</a> is the extra $10.
+        </p>
+      </div>
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">Automation is not a channel on autopilot.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <RelatedLinks extra={[{ href: '/how-to-make-faceless-youtube-videos', label: 'How to make faceless YouTube videos' }]} />
+      <div class="final-band">
+        <p class="eyebrow">One face for the series</p>
+        <h2 class="section-title">Same actor. You stay off camera.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          The <a class="text-link" href="/">review</a>, the <a class="text-link" href="/filmoyo-pricing">license split</a>, and the <a class="text-link" href="/filmoyo-bonus">story starters</a>.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

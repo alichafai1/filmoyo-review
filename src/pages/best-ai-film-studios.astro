@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { personalPrice } from '../lib/affiliate';
+
+const studios = [
+  {
+    rank: '1',
+    name: 'Filmoyo Director',
+    badge: 'Best for character consistency and a one-time price',
+    text: `This site’s top pick for a short film. Character Lock holds a reference sheet across shots, and the personal studio is $${personalPrice} once instead of a monthly bill. It is stylized AI footage, not a live crew, and the included credits are finite.`,
+    top: true,
+  },
+  {
+    rank: '2',
+    name: 'Runway',
+    badge: 'Best for VFX clips',
+    text: 'Runway’s clip models, from the Gen line onward, are built for a single effects shot. Use it when the deliverable is one clip. It is a weak fit when the same actor has to walk into the next scene.',
+    top: false,
+  },
+  {
+    rank: '3',
+    name: 'Pika Labs',
+    badge: 'Best for short loops',
+    text: 'Pika is handy when you want a few seconds that loop. It is not a storyboard, a locked cast, or a studio you buy once.',
+    top: false,
+  },
+  {
+    rank: '4',
+    name: 'Sora',
+    badge: 'Best for a photographic single shot, when you can get in',
+    text: 'OpenAI’s Sora is the name to watch for a more photographic clip, if your account has access. Access and the look change with their rollout. It is not a one-time film studio, and it does not include Filmoyo’s casting vault.',
+    top: false,
+  },
+  {
+    rank: '5',
+    name: 'InVideo',
+    badge: 'Best for templates',
+    text: 'InVideo is the practical pick for a social post that should follow a template. It is an editor, not a director’s workflow, and the cast is not a locked library of 9,500 character images.',
+    top: false,
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is the best AI film studio on this list?',
+    answer: `For a recurring cast and a license you keep, Filmoyo Director is #1 on this page. The personal studio is $${personalPrice} once. Runway, Pika, Sora, and InVideo each win a narrower job.`,
+  },
+  {
+    question: 'Why is Sora not number one?',
+    answer:
+      'A photographic clip is not the same job as directing a short with one cast. Sora belongs on the list when access is open. It does not replace a storyboard, Character Lock, or a one-time studio.',
+  },
+  {
+    question: 'Is this ranking a lab test?',
+    answer:
+      'No. It is this site’s 2026 editorial order, based on whether the tool can hold a character and whether you rent it every month. Prices and model names move. Recheck the vendor page before you buy.',
+  },
+  {
+    question: 'Where do I compare the $27 and $37 licenses?',
+    answer:
+      'On the pricing page. Personal covers your own films. Selling the work to a client takes the $10 commercial add-on.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Best AI Film Studios in 2026',
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: studios.length,
+  itemListElement: studios.map((studio) => ({
+    '@type': 'ListItem',
+    position: Number(studio.rank),
+    name: studio.name,
+    description: studio.badge,
+  })),
+};
+---
+
+<BaseLayout
+  title="Best AI Film Studios in 2026 (Top 5 Ranked)"
+  description="Best AI film studios in 2026: Filmoyo Director is ranked first for Character Lock and a one-time price, ahead of Runway, Pika, Sora, and InVideo."
+  canonicalURL="/best-ai-film-studios"
+  schema={[faqSchema, itemListSchema]}
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Best AI film studios', href: '/best-ai-film-studios' },
+      ]}
+    />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">2026 ranking</p>
+      <h1>Best AI Film Studios in 2026</h1>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        Five tools, ranked for people who want a film rather than a single clip. Filmoyo Director is #1 here because the cast can hold and the personal license is ${personalPrice} once. The other four win narrower jobs.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get the #1 pick →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <ol class="rank-list">
+        {studios.map((studio) => (
+          <li>
+            <article class:list={['surface', 'rank-card', studio.top && 'is-top']}>
+              <p class="rank-num">{studio.rank}</p>
+              <div>
+                <h2 style="margin: 0 0 0.35rem; font-size: 1.45rem;">{studio.name}</h2>
+                <p class="eyebrow" style="margin-bottom: 0.45rem;">{studio.badge}</p>
+                <p>{studio.text}</p>
+                {studio.top && (
+                  <div class="hero-actions" style="margin-top: 1rem; justify-content: flex-start;">
+                    <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+                  </div>
+                )}
+              </div>
+            </article>
+          </li>
+        ))}
+      </ol>
+
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Start with Filmoyo →</AffiliateCta>
+      </div>
+
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">How this order was chosen.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+      <RelatedLinks
+        extra={[
+          { href: '/filmoyo-vs-runway', label: 'Filmoyo vs Runway' },
+          { href: '/filmoyo-vs-invideo', label: 'Filmoyo vs InVideo' },
+        ]}
+      />
+      <div class="final-band">
+        <p class="eyebrow">Number one on this page</p>
+        <h2 class="section-title">Character consistency, then the bill.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          The <a class="text-link" href="/">full review</a> shows the six Wayfinder shots. <a class="text-link" href="/filmoyo-pricing">Pricing</a> explains $27 versus $37. The <a class="text-link" href="/filmoyo-bonus">bonuses</a> are the extra files from this site.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

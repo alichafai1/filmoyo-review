@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { commercialAddon, personalPrice } from '../lib/affiliate';
+
+const commercialTotal = personalPrice + commercialAddon;
+
+const faqs = [
+  {
+    question: 'Do I need the commercial license to sell an ad?',
+    answer: `Yes, if a client is paying you for the film. The personal studio is $${personalPrice} and covers your own projects. The commercial license is $${commercialAddon} more on the order form, $${commercialTotal} total, and that is the right to sell the work.`,
+  },
+  {
+    question: 'Does Filmoyo pay me $500?',
+    answer:
+      'No. Five hundred dollars is an example of a price you might put on an invoice. Filmoyo does not find the client, set your rate, or owe you that money. The $37 is the license. The invoice is your business.',
+  },
+  {
+    question: 'What does the $37 actually buy?',
+    answer:
+      'The same studio as the $27 personal license, plus permission to sell films to clients. You still get 600 Core credits and 150 PRO credits. Top-ups are optional and, per the vendor, non-refundable.',
+  },
+  {
+    question: 'Will the ad look like a live shoot?',
+    answer:
+      'No. The footage is stylized AI film. Show a client the public demo before you promise a photographic commercial. The advantage is a directed cast and frames you approve, not a camera crew.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Filmoyo for Agencies: Sell AI Video Ads to Clients"
+  description="Filmoyo for agencies: the commercial license is $37 once, so you can sell stylized AI video ads to clients. A $500 invoice is your price, not a payout from the tool."
+  canonicalURL="/filmoyo-for-agencies"
+  schema={faqSchema}
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'For agencies', href: '/filmoyo-for-agencies' },
+      ]}
+    />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">For client work</p>
+      <h1>Filmoyo for Agencies: Produce Cinematic Ads for Clients</h1>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        Clients ask for video. A shoot is priced like a crew. Filmoyo is the studio you can sell from, once the commercial license is on the order. The footage is stylized, and you still approve every frame.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get the commercial studio →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <div class="section-head">
+        <p class="eyebrow">The problem</p>
+        <h2 class="section-title">The client wants an ad. The crew quote ends the job.</h2>
+      </div>
+      <div class="problem-list">
+        <article class="problem-item">
+          <span class="x-mark" aria-hidden="true">×</span>
+          <p>A local business will pay for a video and will not pay for a full production week.</p>
+        </article>
+        <article class="problem-item">
+          <span class="x-mark" aria-hidden="true">×</span>
+          <p>Template ads are obvious. A one-off AI clip changes faces between shots.</p>
+        </article>
+        <article class="problem-item">
+          <span class="x-mark" aria-hidden="true">×</span>
+          <p>The $27 personal license does not include the right to sell that film to the client.</p>
+        </article>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Add the commercial license →</AffiliateCta>
+      </div>
+
+      <div class="price-layout">
+        <article class="price-card">
+          <p class="eyebrow">What you pay</p>
+          <p class="price">${commercialTotal}<span> once</span></p>
+          <p class="price-note">${personalPrice} for the studio plus ${commercialAddon} for the right to sell the work. No monthly license fee.</p>
+        </article>
+        <article class="surface panel">
+          <h3>What you might charge</h3>
+          <p>
+            A $500 client invoice is an example, not a payout. You set the price. Filmoyo does not supply the client or guarantee the fee. The contrast is the license: $37 once for the right to do the job, against a crew quote that used to make the same job impossible.
+          </p>
+          <p style="margin-top: 0.8rem;">
+            You draft the ad from a sentence, lock the product’s “actor” or spokesperson, approve the frames, and export without a Filmoyo watermark. Show the look before you promise live-action.
+          </p>
+        </article>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Get Filmoyo for client work →</AffiliateCta>
+      </div>
+
+      <figure class="screen">
+        <img
+          src="/images/storyboard.jpg"
+          width="1600"
+          height="900"
+          alt="Filmoyo storyboard with a frame marked ready before animation"
+          loading="lazy"
+        />
+        <figcaption>Approve the still before it animates. That is the version you can show a client.</figcaption>
+      </figure>
+
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">The license, the invoice, the look.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Open the $37 checkout path →</AffiliateCta>
+      </div>
+      <RelatedLinks extra={[{ href: '/filmoyo-for-content-creators', label: 'Filmoyo for content creators' }]} />
+      <div class="final-band">
+        <p class="eyebrow">Sell the work, don’t rent the studio</p>
+        <h2 class="section-title">$37 once for the right. Your invoice is separate.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          The <a class="text-link" href="/filmoyo-pricing">pricing page</a> is the full $27 versus $37 split. The <a class="text-link" href="/">review</a> shows the cast. The <a class="text-link" href="/filmoyo-bonus">contract template</a> is one of the bonuses you claim with the receipt.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

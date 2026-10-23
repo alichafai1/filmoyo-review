@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { personalPrice } from '../lib/affiliate';
+
+const tools = [
+  {
+    rank: '1',
+    name: 'Filmoyo Director',
+    badge: 'Best for AI filmmaking and Character Lock',
+    text: `Ranked first here for a short you can actually follow. One logline becomes a storyboard, the cast is locked, and the personal license is $${personalPrice} once. It is stylized footage, not a live shoot, and credits run out.`,
+    top: true,
+  },
+  {
+    rank: '2',
+    name: 'Runway',
+    badge: 'Best for VFX',
+    text: 'The clip tool to open when the job is one effects shot. A weak fit when the same actor has to survive the next scene, and the plan keeps billing.',
+    top: false,
+  },
+  {
+    rank: '3',
+    name: 'Sora',
+    badge: 'Best for a photographic look',
+    text: 'OpenAI’s Sora is the pick when you want a more photographic single clip and your account has access. It is not a one-time studio with a casting vault.',
+    top: false,
+  },
+  {
+    rank: '4',
+    name: 'Pika',
+    badge: 'Best for motion',
+    text: 'Useful for a short moving loop. The next prompt is another generation, so do not expect a cast.',
+    top: false,
+  },
+  {
+    rank: '5',
+    name: 'InVideo',
+    badge: 'Best for marketers',
+    text: 'The practical editor when a social post should follow a template. It does not direct an original film from a logline.',
+    top: false,
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is the best AI video generator in 2026 on this page?',
+    answer: `For a film with one cast and a license you keep, Filmoyo Director. The personal studio is $${personalPrice} once. The other four win a narrower job.`,
+  },
+  {
+    question: 'Is Sora better looking?',
+    answer:
+      'A single Sora clip can look more photographic. Looking real for three seconds is not the same as directing a short whose lead is recognizable in shot six.',
+  },
+  {
+    question: 'Why is a template tool on a generator list?',
+    answer:
+      'Marketers search this phrase when they need a video, not a research paper. InVideo belongs at the bottom because it solves a post, not a film.',
+  },
+  {
+    question: 'Is the order independent lab data?',
+    answer:
+      'No. It is this site’s editorial order for 2026. Model names and prices move. Check the vendor before you pay.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Best AI video generators in 2026',
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
+  numberOfItems: tools.length,
+  itemListElement: tools.map((tool) => ({
+    '@type': 'ListItem',
+    position: Number(tool.rank),
+    name: tool.name,
+    description: tool.badge,
+  })),
+};
+---
+
+<BaseLayout
+  title="Best AI Video Generators in 2026 (Top 5 Ranked)"
+  description="Best AI video generators in 2026: Filmoyo Director is ranked first for filmmaking and Character Lock, ahead of Runway, Sora, Pika, and InVideo."
+  canonicalURL="/best-ai-video-generators"
+  schema={[faqSchema, itemListSchema]}
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Best AI video generators', href: '/best-ai-video-generators' },
+      ]}
+    />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">2026 ranking</p>
+      <h1>Best AI Video Generators in 2026</h1>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        Five names people actually compare. Filmoyo Director is #1 on this page when the goal is a film and a cast, not a single trick shot. The personal license is ${personalPrice} once.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get the #1 pick →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <ol class="rank-list">
+        {tools.map((tool) => (
+          <li>
+            <article class:list={['surface', 'rank-card', tool.top && 'is-top']}>
+              <p class="rank-num">{tool.rank}</p>
+              <div>
+                <h2 style="margin: 0 0 0.35rem; font-size: 1.45rem;">{tool.name}</h2>
+                <p class="eyebrow" style="margin-bottom: 0.45rem;">{tool.badge}</p>
+                <p>{tool.text}</p>
+                {tool.top && (
+                  <div class="hero-actions" style="margin-top: 1rem; justify-content: flex-start;">
+                    <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+                  </div>
+                )}
+              </div>
+            </article>
+          </li>
+        ))}
+      </ol>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Start with Filmoyo →</AffiliateCta>
+      </div>
+      <div class="section-head">
+        <p class="eyebrow">How to use the list</p>
+        <h2 class="section-title">Pick the tool by the job, not by the demo reel.</h2>
+        <p class="lede">
+          If you need one effects shot, Runway is the name on this list. If you need a few seconds of motion to test an idea, Pika is enough. If the frame should look as photographic as current access allows, look at Sora and accept that access is not a studio you own. If the deliverable is a social post with a layout, InVideo will be faster than directing.
+        </p>
+        <p class="lede">
+          If the deliverable is a short whose lead has to be the same person in the jungle, the city, and the snow, Filmoyo is the fit. The Director’s Canvas drafts the shots from a logline. The Casting Vault is 9,500+ images and 1,230 avatars. Frame-first approval stops a bad still from becoming a moving shot. The personal price is ${personalPrice} once, with credits in the box, not a monthly rental of the license. That is why it is #1 here, and why the other four are not wrong for their own jobs.
+        </p>
+      </div>
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">A generator is not automatically a studio.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+      <RelatedLinks extra={[{ href: '/best-ai-film-studios', label: 'Best AI film studios' }]} />
+      <div class="final-band">
+        <p class="eyebrow">Number one here</p>
+        <h2 class="section-title">Filmmaking first. Effects second.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          The <a class="text-link" href="/">review</a> has the six Wayfinder shots. <a class="text-link" href="/filmoyo-pricing">Pricing</a> splits $27 and $37. The <a class="text-link" href="/filmoyo-bonus">bonuses</a> are the extra files.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

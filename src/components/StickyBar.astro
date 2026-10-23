@@ -1,0 +1,25 @@
+---
+import AffiliateCta from './AffiliateCta.astro';
+import { personalPrice } from '../lib/affiliate';
+---
+
+<div class="sticky-bar" data-sticky-bar hidden>
+  <p>Filmoyo Director · ${personalPrice} once · no monthly fee</p>
+  <AffiliateCta extraClass="sticky-cta">Get Filmoyo →</AffiliateCta>
+</div>
+
+<script>
+  const bar = document.querySelector('[data-sticky-bar]');
+  const heroCta = document.getElementById('get-filmoyo');
+
+  if (bar instanceof HTMLElement) {
+    if (!heroCta) {
+      bar.hidden = false;
+    } else {
+      const observer = new IntersectionObserver(([entry]) => {
+        bar.hidden = entry.isIntersecting;
+      });
+      observer.observe(heroCta);
+    }
+  }
+</script>

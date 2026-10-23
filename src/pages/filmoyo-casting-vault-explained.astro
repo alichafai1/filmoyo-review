@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { personalPrice } from '../lib/affiliate';
+
+const steps = [
+  {
+    name: 'Open Cast and Sets',
+    text: 'This is the vault. You are not starting from an empty prompt box.',
+  },
+  {
+    name: 'Pick or describe someone',
+    text: 'Choose from the library, or write a short description and build a character. The sales page lists 9,500+ images and 1,230 unique avatars.',
+  },
+  {
+    name: 'Keep the reference sheet',
+    text: 'The sheet is the face, build, and wardrobe. Character Lock is what sends it into the next shot.',
+  },
+  {
+    name: 'Approve them in the scene',
+    text: 'Put the character in the shot, look at the still, and regenerate if the picture is wrong. The vault does not skip that check.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Does the vault write the prompt for me?',
+    answer:
+      'It removes the part where you reinvent a person from scratch every time. You still set the scene, the angle, and the action. The Director Canvas can draft those shots from a logline.',
+  },
+  {
+    question: 'Will the avatar look identical in every frame?',
+    answer:
+      'The sheet is there so the person stays recognizable. The public Wayfinder demo holds across very different places. You should still reject a frame that drifted. “Perfect” is not a setting.',
+  },
+  {
+    question: 'Can I make my own character?',
+    answer: 'Yes. Describe them and save the sheet. You are not limited to the ready-made avatars.',
+  },
+  {
+    question: 'Is the vault a separate purchase?',
+    answer: `No. It is part of the studio. Personal use is $${personalPrice} once. Selling the films takes the $10 commercial add-on.`,
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to cast a character in Filmoyo',
+  description: 'Pick or describe an actor in the Casting Vault, keep the reference sheet, and approve them in the scene.',
+  step: steps.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.name,
+    text: step.text,
+  })),
+};
+---
+
+<BaseLayout
+  title="Filmoyo Casting Vault Explained: 9,500+ AI Actors"
+  description="The Filmoyo Casting Vault is 9,500+ character images and 1,230 avatars. Pick or describe an actor, keep the reference sheet, and approve them in the scene."
+  canonicalURL="/filmoyo-casting-vault-explained"
+  schema={[faqSchema, howToSchema]}
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Casting Vault', href: '/filmoyo-casting-vault-explained' },
+      ]}
+    />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">The library</p>
+      <h1>Filmoyo Casting Vault: 9,500+ AI Actors</h1>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        Writing a new description of the lead for every shot is how hours disappear. The vault is the shortcut: choose an avatar, or describe one, and keep that sheet for the scene instead of prompting a stranger into existence.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get the Casting Vault →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <figure class="screen">
+        <img
+          class="frame-top"
+          src="/images/workspace.jpg"
+          width="1600"
+          height="842"
+          alt="Filmoyo workspace listing the Chairman and the Wayfinder in the cast"
+          loading="lazy"
+        />
+        <figcaption>Two saved characters in one film. Each has a sheet, not a fresh guess.</figcaption>
+      </figure>
+      <div class="section-head">
+        <p class="eyebrow">How you use it</p>
+        <h2 class="section-title">Pick, lock, then look at the still.</h2>
+        <p class="lede">
+          The sales page lists 9,500+ character images and 1,230 unique avatars, plus build-your-own. Choosing one does not mean the shot is finished. The sheet is placed into the scene. You still approve the frame. That is faster than inventing the person from a blank prompt every time. It is not a claim that every still matches on the first try.
+        </p>
+      </div>
+      <ol class="claim-steps">
+        {steps.map((step) => (
+          <li>
+            <strong>{step.name}</strong>
+            <span>{step.text}</span>
+          </li>
+        ))}
+      </ol>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Cast the film →</AffiliateCta>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Open Filmoyo →</AffiliateCta>
+      </div>
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">Library, sheet, and the check you still do.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+      <RelatedLinks extra={[{ href: '/filmoyo-character-lock-explained', label: 'Character Lock explained' }]} />
+      <div class="final-band">
+        <p class="eyebrow">${personalPrice} once</p>
+        <h2 class="section-title">The vault is inside the studio, not a second product.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          The <a class="text-link" href="/">review</a>, <a class="text-link" href="/filmoyo-pricing">pricing</a>, and <a class="text-link" href="/filmoyo-bonus">bonuses</a>.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

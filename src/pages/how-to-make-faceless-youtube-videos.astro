@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { personalPrice } from '../lib/affiliate';
+
+const steps = [
+  {
+    name: 'Choose a niche you can repeat',
+    text: 'Pick a subject you can explain in many videos: a kind of story, a period of history, a how-to. One video is not a channel. Do not pick a niche because a thumbnail looked rich.',
+  },
+  {
+    name: 'Write the script',
+    text: 'A short outline is enough to start: the hook, three beats, and the ending. The pictures follow the beats. A script with no beats becomes random clips.',
+  },
+  {
+    name: 'Generate the visuals',
+    text: `Cast one person in Filmoyo and lock them, then approve a still for each beat. The personal studio is $${personalPrice} once, which is the affordable way to get cinematic frames without another monthly generator. Credits are the limit, not an unlimited tap.`,
+  },
+  {
+    name: 'Add the voice and upload',
+    text: 'Record the narration or use a separate voice tool. Filmoyo does not replace the voiceover. Cut the approved shots to the words, export, and post. Views are not part of the file.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Do I have to show my face?',
+    answer: 'No. The cast is generated. You can stay off camera for the whole video.',
+  },
+  {
+    question: 'Is Filmoyo the whole YouTube workflow?',
+    answer:
+      'It is the picture. Niche, script, voice, editing to the voice, thumbnail, and upload are still yours. That is why this is a guide and not a button.',
+  },
+  {
+    question: 'Why is a one-time tool the affordable option?',
+    answer: `A generator at about $15 a month is $180 a year before you have a second year of videos. Filmoyo’s personal license is $${personalPrice} once. You may still buy credit top-ups if you publish a lot. Those packs are separate.`,
+  },
+  {
+    question: 'Will the same character last the whole video?',
+    answer:
+      'If you cast them and keep the reference sheet, that is what Character Lock is for. Skipping the sheet and prompting each scene alone is how the face changes.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to make a faceless YouTube video with AI',
+  description: 'Choose a niche, write a script, generate cinematic visuals with a locked cast, then add a voiceover and upload.',
+  step: steps.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.name,
+    text: step.text,
+  })),
+};
+---
+
+<BaseLayout
+  title="How to Make Faceless YouTube Videos (Using AI)"
+  description="How to make faceless YouTube videos: pick a niche, write the script, generate cinematic shots with Filmoyo's locked cast, then add a voiceover. $27 once. Views are not included."
+  canonicalURL="/how-to-make-faceless-youtube-videos"
+  schema={[faqSchema, howToSchema]}
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Faceless YouTube videos', href: '/how-to-make-faceless-youtube-videos' },
+      ]}
+    />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">A beginner path</p>
+      <h1>How to Make Faceless YouTube Videos</h1>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        You can publish without being on camera. You still need a subject, words, pictures that belong together, and a voice. AI covers the pictures. It does not cover the audience.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get Filmoyo for the visuals →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <div class="section-head">
+        <p class="eyebrow">The steps</p>
+        <h2 class="section-title">Niche, script, pictures, voice.</h2>
+      </div>
+      <ol class="claim-steps">
+        {steps.map((step) => (
+          <li>
+            <strong>{step.name}</strong>
+            <span>{step.text}</span>
+          </li>
+        ))}
+      </ol>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Generate the cinematic shots →</AffiliateCta>
+      </div>
+      <figure class="screen">
+        <img
+          src="/images/storyboard.jpg"
+          width="1600"
+          height="900"
+          alt="Filmoyo storyboard with an approved frame and a timeline of scenes"
+          loading="lazy"
+        />
+        <figcaption>One approved frame per beat of the script. Then cut them to the voice.</figcaption>
+      </figure>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Build the faceless video →</AffiliateCta>
+      </div>
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">Affordable pictures. No promised views.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+      <RelatedLinks extra={[{ href: '/filmoyo-for-youtube-automation', label: 'Filmoyo for YouTube automation' }]} />
+      <div class="final-band">
+        <p class="eyebrow">${personalPrice} for the pictures</p>
+        <h2 class="section-title">The channel is the habit. The studio is the look.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          Start at the <a class="text-link" href="/">review</a>, check <a class="text-link" href="/filmoyo-pricing">$27 versus $37</a>, and use the <a class="text-link" href="/filmoyo-bonus">logline bonus</a> if the script is the blank page.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

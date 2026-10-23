@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { personalPrice } from '../lib/affiliate';
+
+const rows = [
+  {
+    label: 'What you make',
+    invideo: 'Social posts built on templates.',
+    filmoyo: 'An original AI short from a logline.',
+  },
+  {
+    label: 'Cast',
+    invideo: 'Template media. No 9,500-image vault of locked AI actors.',
+    filmoyo: '9,500+ character images, 1,230 avatars, plus Character Lock.',
+  },
+  {
+    label: 'How it starts',
+    invideo: 'Pick a template and swap the text.',
+    filmoyo: 'Type one sentence. Approve the frames.',
+  },
+  {
+    label: 'Price',
+    invideo: 'A monthly subscription. The listed plan changes.',
+    filmoyo: `$${personalPrice} once, or $37 with the commercial license.`,
+  },
+  {
+    label: 'Best for',
+    invideo: 'A fast post that should look like the template.',
+    filmoyo: 'A cinematic short that should not look like a template.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Is Filmoyo the same kind of tool as InVideo?',
+    answer:
+      'No. InVideo is a template editor for social posts. Filmoyo is a film studio: one sentence becomes a storyboard, you cast the actors, and you approve each frame before it animates.',
+  },
+  {
+    question: 'Does InVideo have a casting vault?',
+    answer:
+      'Not Filmoyo’s vault. InVideo works from templates and stock-style media. Filmoyo’s public offer is 9,500+ character images and 1,230 avatars, with a reference sheet locked into every shot.',
+  },
+  {
+    question: 'Which one is a one-time price?',
+    answer: `Filmoyo’s personal studio is $${personalPrice} once. InVideo bills on a subscription. Check InVideo’s current plan before you compare a single month with a license you keep.`,
+  },
+  {
+    question: 'Can I still make a social post in Filmoyo?',
+    answer:
+      'Yes. A film can be vertical for a feed or widescreen. The difference is that the footage is generated and directed, not dropped into someone else’s template.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="Filmoyo vs. InVideo: AI Studio vs. Template Editor"
+  description="Filmoyo vs InVideo: InVideo makes social posts from templates on a subscription. Filmoyo is a one-time AI film studio with a casting vault and Character Lock."
+  canonicalURL="/filmoyo-vs-invideo"
+  schema={faqSchema}
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Filmoyo vs InVideo', href: '/filmoyo-vs-invideo' },
+      ]}
+    />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">Comparison</p>
+      <h1>Filmoyo vs. InVideo</h1>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        InVideo is for making social posts from templates. Filmoyo is for creating a cinematic short from scratch. One starts with a layout someone else designed. The other starts with a sentence and a cast.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <div class="section-head">
+        <p class="eyebrow">Side by side</p>
+        <h2 class="section-title">Templates, a cast, and the bill.</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th scope="col"> </th>
+              <th scope="col">InVideo</th>
+              <th scope="col">Filmoyo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr>
+                <td>{row.label}</td>
+                <td>{row.invideo}</td>
+                <td>{row.filmoyo}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Skip the template →</AffiliateCta>
+      </div>
+
+      <figure class="screen">
+        <img
+          src="/images/casting-vault.jpg"
+          width="1600"
+          height="900"
+          alt="Filmoyo Cast and Sets panel with the Wayfinder reference sheet"
+          loading="lazy"
+        />
+        <figcaption>Filmoyo’s casting panel. The reference sheet is the thing a template editor does not lock into every shot.</figcaption>
+      </figure>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Get the casting vault →</AffiliateCta>
+      </div>
+
+      <div class="section-head">
+        <p class="eyebrow">A worked example</p>
+        <h2 class="section-title">The same ad, two different jobs.</h2>
+        <p class="lede">
+          A template in InVideo is the right tool when you need a post tonight and the layout can look like the template. You swap text, drop in clips, and export. The cast is whatever media the template expected. There is no 9,500-image vault and no reference sheet that has to survive the next scene.
+        </p>
+        <p class="lede">
+          The same brief in Filmoyo starts as a logline on the Director’s Canvas. You cast a spokesperson, lock the sheet, and approve a still for the opener, the product, and the end card before anything animates. Frame-first is the difference: you reject a bad face while it is still a picture. Then you stitch and download without a Filmoyo watermark. The personal studio is ${personalPrice} once if the ad is yours. Selling it to the brand is the $10 commercial license. InVideo’s monthly plan can look smaller on day one. It is still a bill, and it is still a template.
+        </p>
+      </div>
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">Studio or template editor.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+      <RelatedLinks extra={[{ href: '/filmoyo-vs-runway', label: 'Filmoyo vs Runway' }]} />
+      <div class="final-band">
+        <p class="eyebrow">If the film has to be yours</p>
+        <h2 class="section-title">A template is fast. A cast is a film.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          Read the <a class="text-link" href="/">full review</a>, the <a class="text-link" href="/filmoyo-pricing">${personalPrice} and $37 license split</a>, and the <a class="text-link" href="/filmoyo-bonus">filmmaker bonuses</a>.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AffiliateCta from '../components/AffiliateCta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+
+const steps = [
+  {
+    name: 'Write a logline',
+    text: 'One or two sentences. Who it is, what they want, and the tone. That sentence is the brief, not the finished shot list.',
+  },
+  {
+    name: 'Choose the cast',
+    text: 'Pick actors from the Casting Vault, or describe them. Character Lock saves a reference sheet so the face can travel from scene to scene.',
+  },
+  {
+    name: 'Generate the storyboard',
+    text: 'The Director Canvas breaks the logline into shots. You approve each still, frame by frame, before anything moves.',
+  },
+  {
+    name: 'Animate and export',
+    text: 'Animate the frames you approved, then stitch them into one film and download it without a Filmoyo watermark.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Do I need a film-school script?',
+    answer: 'No. A logline of one or two sentences is the start. You still read the frames and reject the ones that are wrong.',
+  },
+  {
+    question: 'Why is this less work than prompting every shot?',
+    answer:
+      'Manual prompting means a new prompt, and often a new face, for every cut. The Director Canvas drafts the storyboard from the logline. You spend the time approving pictures, not inventing the whole film one isolated prompt at a time.',
+  },
+  {
+    question: 'Is the export a finished Hollywood short?',
+    answer: 'It is a stylized AI film. Length depends on the shots you approve and the credits you spend. It is not a live-action crew.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to create an AI short film',
+  description: 'Go from a one or two sentence logline to an exported Filmoyo short by casting, approving frames, then animating.',
+  step: steps.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.name,
+    text: step.text,
+  })),
+};
+---
+
+<BaseLayout
+  title="How to Create an AI Short Film (Step-by-Step Guide)"
+  description="How to create an AI short film: write a logline, cast from the vault, approve the storyboard frame by frame, then animate and export in Filmoyo."
+  canonicalURL="/how-to-create-ai-short-film"
+  schema={[faqSchema, howToSchema]}
+>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Create an AI short', href: '/how-to-create-ai-short-film' },
+      ]}
+    />
+  </div>
+
+  <section class="page-intro">
+    <div class="container">
+      <p class="eyebrow">Step by step</p>
+      <h1>How to Create an AI Short Film from Scratch</h1>
+      <p class="lede" style="margin-top: 0.9rem; max-width: 42rem;">
+        Start with a blank page. End with one cinematic video you can download. The path is a logline, a cast, frames you accept, then the animation.
+      </p>
+      <div class="hero-actions" style="margin-top: 1.3rem; justify-content: flex-start;">
+        <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container stack-lg">
+      <div class="section-head">
+        <p class="eyebrow">The steps</p>
+        <h2 class="section-title">Four moves from a sentence to a file.</h2>
+      </div>
+      <ol class="claim-steps">
+        {steps.map((step) => (
+          <li>
+            <strong>{step.name}</strong>
+            <span>{step.text}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="lede">
+        The Director Canvas is what makes the middle of that list lighter. It drafts the shots from the logline, so you are not writing a fresh prompt for every cut. You still approve the pictures. That is the work. It is not a measured “ten times faster.” It is the difference between directing a draft and prompting in the dark.
+      </p>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Draft the storyboard →</AffiliateCta>
+      </div>
+
+      <div class="split">
+        <figure class="screen">
+          <img class="frame-top" src="/images/logline.jpg" width="1600" height="900" alt="Filmoyo Direct tab with a shot prompt and the Wayfinder selected" loading="lazy" />
+          <figcaption>The shot, after the logline has been broken down.</figcaption>
+        </figure>
+        <figure class="screen">
+          <img src="/images/storyboard.jpg" width="1600" height="900" alt="A Filmoyo frame marked FRAME READY above a scene timeline" loading="lazy" />
+          <figcaption>Approve the still. Then let it move.</figcaption>
+        </figure>
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta>Start the short →</AffiliateCta>
+      </div>
+
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="section-title">What you still have to do.</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+      <div class="hero-actions" style="justify-content: flex-start;">
+        <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+      </div>
+      <RelatedLinks extra={[{ href: '/filmoyo-character-lock-explained', label: 'Character Lock explained' }]} />
+      <div class="final-band">
+        <p class="eyebrow">Then export</p>
+        <h2 class="section-title">A short is the shots you were willing to approve.</h2>
+        <p class="lede narrow" style="margin-top: 0.8rem;">
+          The <a class="text-link" href="/">review</a> shows the demo. <a class="text-link" href="/filmoyo-pricing">Pricing</a> is $27 or $37. The <a class="text-link" href="/filmoyo-bonus">logline bonus</a> is a pile of starters if the blank page is the hard part.
+        </p>
+        <div class="hero-actions" style="margin-top: 1.1rem;">
+          <AffiliateCta extraClass="btn-lg">Get Filmoyo Director →</AffiliateCta>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
