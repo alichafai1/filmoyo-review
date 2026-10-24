@@ -144,7 +144,7 @@ const faqs = [
   },
 ];
 
-const site = Astro.site ?? new URL('https://filmoyoreview.com');
+const site = Astro.site ?? new URL('https://www.filmoyo.info');
 const pageUrl = new URL('/', site).href;
 const image = new URL('/images/demo-poster.jpg', site).href;
 
@@ -215,22 +215,6 @@ const faqSchema = {
       </p>
       <div class="hero-actions">
         <AffiliateCta id="get-filmoyo" extraClass="btn-lg">Get Filmoyo Director + My Bonuses&nbsp;→</AffiliateCta>
-      </div>
-      <div class="demo-frame">
-        <img
-          src="/images/demo-poster.jpg"
-          width="1280"
-          height="704"
-          alt="A hand holding a sealed letter, a still from Filmoyo’s public demo film The Letter"
-        />
-        <div class="demo-shade">
-          <span class="play-button" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 22 22">
-              <path d="M7 4.5v13l12-6.5-12-6.5z" fill="currentColor"></path>
-            </svg>
-          </span>
-          <p>Watch Demo</p>
-        </div>
       </div>
     </div>
   </section>

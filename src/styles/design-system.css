@@ -288,7 +288,7 @@ textarea {
 }
 
 .hero {
-  padding: 4.5rem 0 5.5rem;
+  padding: 4.5rem 0 4.25rem;
 }
 
 .hero-inner {
@@ -335,58 +335,10 @@ textarea {
   text-underline-offset: 0.22em;
 }
 
-.demo-frame {
-  position: relative;
-  width: min(100%, 920px);
-  margin-top: 0.6rem;
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  border-radius: 20px;
-  box-shadow: 0 24px 50px rgba(24, 24, 27, 0.12);
-}
-
-.demo-frame img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1280 / 704;
-  object-fit: cover;
-}
-
-.demo-shade {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.85rem;
-  padding: 4.2rem 1.2rem 1.25rem;
-  background: linear-gradient(transparent, rgba(12, 10, 9, 0.92));
-}
-
-.play-button {
-  display: grid;
-  place-items: center;
-  width: 3.4rem;
-  height: 3.4rem;
-  border-radius: 50%;
-  background: var(--color-primary);
-  color: #fff;
-  box-shadow: var(--shadow-glow);
-}
-
-.demo-shade p {
-  color: #fff;
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
 .verdict-wrap {
   position: relative;
   z-index: 2;
-  margin-top: -2.8rem;
+  margin-top: -1.5rem;
 }
 
 .verdict-card {
@@ -1271,8 +1223,6 @@ body.no-sticky {
 }
 
 @media (max-width: 768px) {
-  .demo-frame,
-  .demo-frame img,
   .screen,
   .screen img,
   .filmstrip img,
@@ -1284,8 +1234,7 @@ body.no-sticky {
     height: auto;
   }
 
-  .screen,
-  .demo-frame {
+  .screen {
     margin: 1.25rem 0;
   }
 

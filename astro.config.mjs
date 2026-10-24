@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://filmoyoreview.com',
+  site: 'https://www.filmoyo.info',
   trailingSlash: 'never',
   build: {
     format: 'directory',

@@ -19,7 +19,7 @@ const {
   noindex = false,
 } = Astro.props;
 
-const site = Astro.site ?? new URL('https://filmoyoreview.com');
+const site = Astro.site ?? new URL('https://www.filmoyo.info');
 const canonical = new URL(canonicalURL ?? Astro.url.pathname, site);
 const image = ogImage ? new URL(ogImage, site) : undefined;
 const schemas = schema == null ? [] : Array.isArray(schema) ? schema : [schema];

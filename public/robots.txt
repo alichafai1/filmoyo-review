@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://filmoyoreview.com/sitemap-index.xml
+Sitemap: https://www.filmoyo.info/sitemap-index.xml
